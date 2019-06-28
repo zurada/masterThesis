@@ -1,0 +1,16 @@
+% zmiana nazwy abstraktu
+\begin{abstract}
+
+Więszkość systemów informatycznych opartych jest na operacjach CRUD,\index{CRUD} czyli dodawaniu, odczytywaniu, aktualizacji i usuwaniu informacji w oparciu o bazę danych.
+
+Aplikacje oparte na modelu anemicznym to takie, które używają operacji CRUD i nie są niczym innym jak jedynie oprawą graficzną bazy danych. Użytkownik owego system, władający wiedzą z zakresu baz danych, potrafiłby bezpośrednio na poziomie połączenia z bazą danych zmieniać stan danych aplikacji adekwatnie do potrzeb logiki biznesowej. Z aplikacjami opartymi na modelu anemicznym\index{Anemic Model} związany jest pewien problem - jakakolwiek aktualizacja czy usunięcie danych zmienia dane w sposób trwały i tracimy informację o wcześniejszej wersji danej sprzed aktualizacji czy usunięcia.
+Posiadanie całej historii danych w aplikacji może pozwolić nam na odtworzenie wszystkich operacji od początku, cofnięcie się w czasie do danego punktu, czy też szybkie rozpoznanie sytuacji niebezpiecznych i ochronę aplikacji przed atakami osób trzecich. Event Sourcing jest podejściem, który proponuje rozwiązanie powyższych problemów, gdzie każda operacja jest osobnym wydarzeniem w aplikacji. Jest to swoisty dziennik zachowujący całą historię danych w sposób trwały.
+CQRS, czyli sposób na logiczną segregację systemu na część odpowiedzialną za zmiany w systemie i część jedynie czytającą stan danych, jest bardzo często wykorzystywany w połączeniu z Event Sourcing'iem.\index{Event Sourcing}
+
+W ramach pracy dyplomowej została zaimplementowana w dwóch wersjach domena sklepu internetowego z kartami podarunkowymi, poprzez użycie modelu monolitycznego z anemicznym modelem danych i Event Sourcing'iem.\index{Event Sourcing} Analiza na praktycznym przykładzie opisuje wady i zalety obu podejść.
+
+Event Sourcing jest bardzo nowoczesnym podejściem, jeżeli użyje go się razem z CQRS.\index{CQRS} Aplikacje oparte na nim implikują oparcie rozwiązania o architekturę mikroserwisową, która daje więszą elastyczność, skalowalność i łatwość w rozszerzaniu funkcjonalności, niż aplikacje monolityczne.\index{aplikacja monolityczna}
+Jednakże zastosowanie Event Sourcing'u wymaga o wiele więcej wkładu pracy i czasu, bo oparcie systemu o wydarzenia pociąga za sobą inne komplikacje i utrudnienia występujące w asynchronicznej naturze wydarzeń.
+
+\textbf{Słowa kluczowe:} aplikacje monolityczne, architektura oprogramowania, Event Sourcing, jakość oprogramowania, mikroserwisy
+\end{abstract}

@@ -1,0 +1,50 @@
+\documentclass[inf, aio]{pjatkThesis}
+
+
+\usepackage{times}
+\usepackage[polish]{babel}
+
+\usepackage{graphicx}
+
+\usepackage[section, subsection]{placeins}
+\usepackage[hyphens]{url}
+
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{lipsum}
+%\usepackage{url}
+\author{Adam Żurada}
+\album{Nr albumu 16388}
+\title{Wpływ zastosowania Event Sourcing'u i architektury mikroserwisowej na jakość oprogramowania}
+\type{Praca magisterska napisana pod kierunkiem:}
+\supervisor{dr hab. Piotr Habela}
+\location{Warszawa}
+\date{styczeń 2019}
+
+\begin{document}
+
+\include{_Abstrakt}
+\tableofcontents
+
+
+
+\pagenumbering{arabic}
+\baselineskip=22pt
+
+\include{_Wprowadzenie}
+%\include{_Rozdzial_I}
+\include{_2_Przedst_Omaw_Tech}
+\include{_3_Implementacja_przykladowego_projektu}
+\include{_4_Wnioski}
+\include{_5_Podsumowanie}
+
+%\addcontentsline{toc}{chapter}{Literatura}
+
+\bibliographystyle{abbrv}
+\bibliography{bibliografia}
+
+\listoffigures
+\printindex
+
+\end{document}

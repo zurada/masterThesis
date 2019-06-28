@@ -1,0 +1,19 @@
+\chapter{Podsumowanie}
+
+
+W ramach pracy dyplomowej została zaimplementowana domena sklepu internetowego z kartami podarunkowymi w dwóch wersjach, tj. przy użyciu modeli monolitycznego z anemicznym modelem danych i Event Sourcing'u\index{Event Sourcing} połączonego z CQRS\index{CQRS}. 
+
+Oba sposoby na tworzenie architektury systemów są poprawne i oba spotykane na co dzień w pracy programisty. Jedynie kontekst ich użycia jest kluczowy i musi być wzięty pod uwagę przy podejmowaniu decyzji o architekturze systemu. Kontekst rozumiany jest jako typ aplikacji, skomplikowaność domeny biznesowej, możliwości i wymagania projektowe. Każda dziedzina problemowa będzie miała inne wymagania i to zależnie od nich decyzja na dane podejście musi być indywidualnie podjęta.
+ 
+Jednakże zrozumienie jakie oba podejścia mają cechy charakterystyczne może bardzo pomóc przy decyzji. Ażeby można było lepiej zrozumieć wady i zalety obu podejść, autor pracy oparł swoje wnioski o jakość oprogramowania zgodną ze standardem ISO/IEC 25010:2011, gdzie jakość oprogramowania określana jest przez stabilność funkcjonalna, wydajność działania, kompatybilność, użyteczność, niezawodność, bezpieczeństwo, utrzymywalność i przenośność wytworzonego oprogramowania.\cite{jakoscOpr}
+ 
+Analiza jakości oprogramowania oparta na tym praktycznym przykładzie wykazała wady i zalety obu podejść.
+
+Aplikacje oparte na Event Sourcing'u\index{Event Sourcing} naturalnie implikują oparcie rozwiązania o architekturę mikroserwisową, która daje więszą elastyczność, skalowalność i łatwość w rozszerzaniu funkcjonalności, niż aplikacje monolityczne\index{aplikacja monolityczna} i anemiczne.
+Jednakże zastosowanie Event Sourcing'u\index{Event Sourcing} wymaga o wiele więcej wkładu pracy i czasu, bo oparcie systemu o wydarzenia pociąga za sobą inne komplikacje i utrudnienia występujące w asynchronicznej naturze wydarzeń. Wymaga poznania nowego podejścia, które często w ogóle nie jest znane dla programistów nawet z wieloletnim doświadczeniem. Jeżeli dziedzina problemowa jest dosyć skomplikowana i wymaga zapisu wszystkich zdarzeń w systemie, to najlepszym rozwiązaniem jest inwestycja czasu na poznanie i wdrożenie Event Sourcing'u. Wielką zaletą jest też przenaszalność systemu opartego na Event Sourcing'u\index{Event Sourcing} ze względu na jego bardzo elastyczną skalowalność dzięki achitekturze mikroserwisowej i sposobie działania Apache Kafka.
+
+Model monolityczny\index{aplikacja monolityczna} lepiej sprawdza się przy domenie prostej do implementacji, a także przy ograniczonych zasobach systemowych. Jest on również prostszy w utrzymaniu, ze względu na mniejsze skomplikowanie wykonywania operacji na danych produkcyjnych i dostępie narzędzi do monitorowania całego systemu, które są ogólnodostępne i niewymagające implementacji własnych rozwiązań.
+
+Przy tworzeniu aplikacji monolitycznych\index{aplikacja monolityczna} musi jednakże zawsze być zachowana świadomość niebezpieczeństwa, jakie wynika z anemicznego modelu\index{Anemic Model} danych i jej głębszych problemów w utrzymaniu.
+
+Jeżeli zasadnym jest użycie Event Sourcing'u ze względu na domenę problemową i zasoby systemowe, to zastosowanie tego podejścia, połączonego z użyciem architektury mikroserwisowej zapewnia poprawę jakości oprogramowania w rozumieniu normy ISO/IEC 25010:2011.

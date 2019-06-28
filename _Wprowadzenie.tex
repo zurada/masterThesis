@@ -1,0 +1,52 @@
+\chapter{Wprowadzenie}
+\label{ch:wprowadz}
+
+Każdy projekt oparty o system informatyczny przechodzi przez fazę dokonania decyzji o wyborze architektury aplikacji. Do tej pory większość aplikacji implementowana była o strukturę monolityczną, czyli taką gdzie konstrukcja oprogramowania oparta jest na jednym, wspólnym i współdzielonym modelu danych.
+Tworząc aplikacje w ten sposób programiści i architekci często wpadają w pułapkę antywzorca projektowego, jakim jest anemiczny model dziedziny.\index{Anemic Model}
+
+,,W tym przypadku model dziedziny składa się z klas z atrybutami bez metod, nie jest więc obiektowy. Logika biznesowa przeniesiona jest do innych klas, które transformują klasy dziedziny zmieniając ich stan (...) Znaczna część metodyk tworzenia oprogramowania w Javie (w tym EJB) operuje na takim modelu. Duża część projektantów przenosi też swoje przyzwyczajenia z modelowania baz danych modelując system w ten sposób.''\cite{Antywzorzec-projektowy}
+
+Aplikacja monolityczna nie tylko jest trudna do implementacji, ale także problematyczna przy dodawaniu nowych funkcjonalności. Tego typu problemy stara rozwiązać się architektura mikroserwisowa, coraz częsciej wybierana przez architektów i programistów, zwana często potocznie jako mikroserwisy czy aplikacja w chmurze. 
+
+Mikroserwisy to bardzo wygodna architektura. Wymaga całkowitej rezygnacji z jednego, relacyjnego systemu danych dla dużej aplikacji, dzięki czemu możliwe jest niezależne, iteracyjno-przyrostowe (zwinne) implementowanie kolejnych usług. Ogólna idea to budowanie aplikacji tak, by każdy przypadek użycia stanowił praktycznie odrębny mały komponent. W efekcie mamy dużą swobodę zarządzania kolejnością ich implementacji a lokalne modyfikacje nie przenoszą się na resztę systemu. Ewentualne współdzielone komponenty to wyłącznie elementy logiki biznesowej, co nie ogranicza zbyt mocno kolejności implementowanych i wdrażanych usług aplikacyjnych. \cite{Mikroserwisy-IT-Consulting}
+
+
+Podział aplikacji na mikroserwisy nie rozwiązuje jedankże problemów implementacyjncyh.
+Jakakolwiek aktualizacja czy usunięcie danych zmienia stan aplikacji w sposób trwały, tym samym tracąc informację o wcześniejszego stanu sprzed aktualizacji czy usunięcia.
+Posiadanie całej historii danych w aplikacji, od samego początku, może pozwolić nam na odtworzenie każdej operacji użytkownika, cofnięcie się do danego punktu w czasie, czy też szybkie rozpoznanie ataku na aplikację przez osoby trzecie.
+
+Event Sourcing jest podejściem, który proponuje rozwiązanie powyższych problemów. W tym modelu każda operacja jest osobnym wydarzeniem w aplikacji, które zostają trwale zapisane w bazie danych. 
+
+W ramach pracy dyplomowej zostały zaimplementowane i porównane dwie wersje aplikacji o tej samej funkcjonalności, oparte na modelu anemicznym i na Event Sourcing'u. 
+
+Jeżeli zasadnym jest użycie Event Sourcing'u ze względu na domenę problemową i zasoby systemowe, to zastosowanie tego podejścia, połączonego z użyciem architektury mikroserwisowej zapewnia poprawę jakości oprogramowania w rozumieniu normy ISO/IEC 25010:2011.
+
+
+\section{Cel pracy}
+Celem niniejszej pracy było zaprezentowanie monolitycznej aplikacji\index{aplikacja monolityczna} z modelem anemicznym \index{Anemic Model}, a także Event Source'ingu jako rozwiązań architektonicznych dla aplikacji internetowych. Analiza i porównanie obu sposobów implementacji posłużyło do wyciągnięcia wniosków i pomocy w wyborze dobrego podejścia dla danej dziedziny problemowej.
+Porównanie opiera się na ocenie jakości oprogramowania.
+W celu zbadania stawianego przed pracą problemu powstał prototyp aplikacji w dwóch wersjach opartych o oba przedstawione podejscia. 
+Jest to system aukcyjny e-commerce, gdzie można wystawiać i sprzedawać karty podarunkowe.
+
+\section{Rozwiązania przyjęte w pracy}
+Prototypy aplikacji zostały oparte na Javie w wersji 10, ze względu na zawodowe doświadczenie autora pracy w pisaniu aplikacji internetowych właśnie w tej technologii.
+
+Wersja aplikacji monolitycznej\index{aplikacja monolityczna} z modelem anemicznym\index{Anemic Model} opiera się na Spring Framework i relacyjnej bazie SQL i Hibernate. 
+
+Wersja aplikacji oparta o Event Sourcing\index{Event Sourcing} wykorzystuje również Spring Framework,\index{Spring} ale do komunikacji między mikroserwisami używa Apache Kafka.
+
+\section{Rezultaty pracy}
+Głównym wynikiem pracy jest własna analiza i porównanie poszczególnych podejść do architektury systemu informatycznego na przykładzie implementacji aplikacji internetowej.
+W ramach tworzenia pracy powstały dwie odrębne aplikacje, których porównanie ułatwia deyzję, które podejscie jest adekwatne w danej sytuacji, a także ocenia jakość oprogramowania.
+
+\section{Organizacja pracy}
+Pierwszy etap dokładnie opisuje każdą z wymienionych wyżej technologii, co stanowi wstęp teoretyczny przybliżający stos technologiczny.
+
+Kolejny etap poświęcony jest opisie funkcjonalności aplikacji-prototypu, które muszą być uwzględnione, a także zawiera diagram bazy danych.
+
+Następnie autor pracy opsiuje dokładną implementację prototypów, co stanowi pewnego rodzaju dokumentację obu aplikacji.
+
+Ostatnim etapem jest szczegółówa analiza i porównanie pomiędzy monolitem \index{aplikacja monolityczna} z modelem anemicznym \index{Anemic Model} a Event Sourcing'iem.\index{Event Sourcing} Przedstawiona jest weryfikacja jakości oprogramowania obu implementacji. 
+
+
+
